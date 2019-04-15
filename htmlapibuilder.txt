@@ -1,0 +1,6 @@
+Irj, olyan Java API-t, amely képes HTML dokumentumok generálására. Két típusú HTML komponenst
+kellene modellezni, konténer és vezérlo típusú komponenst. Példaképp konténer típusú elem lehet a
+DIV, vagy TABLE, vezérlo elem lehet egy hagyományos gomb. A feladat célja, hogy minél jobban
+látszódjon az elkészült kódban az objektum orientált szemléletmód. Szeretném látni, hogyan
+modellezted le a HTML DOM-ot. Nem szükséges csak egy-két általad kiválasztott HTML elem
+modellezése, azonban mindenképp legyen legalább 1 konténer és 1 vezérlo elem.
