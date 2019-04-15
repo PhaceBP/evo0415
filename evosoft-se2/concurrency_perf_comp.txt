@@ -1,0 +1,24 @@
+
+Egy szál, no sync:
+Time taken : 638 ms
+Result is : 1000000000
+
+Egy szál, volatile
+Time taken : 7191 ms
+Result is : 1000000000
+
+Egy szal, atomic
+
+Time taken : 5241 ms
+Result is : 1000000000
+
+Tobb szal, atomic
+Time taken : 9675 ms
+Result is : 1000000000
+
+
+Time taken : 15385 ms
+Result is : 1000000000
+
+Time taken : 37413 ms
+Result is : 1000000000

@@ -1,0 +1,8 @@
+Lab1:
+
+- mezok felderitése
+- metódusok felderitése
+- construktorok felderitese
+- setter & getter metodusok felderitese(név vagy teljes szignatura)
+- megkeresni a @Secure annotációt paraméterként és lekérdezni a role értékét
+- osztály szinten kiiratni a módositokat (abstract, final, interface, public, protected, stb.)
