@@ -14,7 +14,7 @@ public class DelayedQueueTest {
 
 		BlockingQueue<DelayObject> queue = new DelayQueue<>();
 		int numberOfElementsToProduce = 2;
-		int delayOfEachProducedMessageMilliseconds = 10000;
+		int delayOfEachProducedMessageMilliseconds = 4000;
 
 		DelayedQueueProducer producer = new DelayedQueueProducer(queue, numberOfElementsToProduce,
 				delayOfEachProducedMessageMilliseconds);

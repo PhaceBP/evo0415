@@ -16,14 +16,13 @@ class CounterUsingMutex {
 	}
 
 	void increase() throws InterruptedException {
-		System.out.println("hasQueuedThreads: " + hasQueuedThreads());
 		mutex.acquire();
 		System.out.println("Thread name: " + Thread.currentThread().getName());
 		this.count = this.count + 1;
 		mutex.release();
 	}
 
-	int getCount() {
+	synchronized int  getCount() {
 		return this.count;
 	}
 
@@ -46,5 +45,6 @@ class CounterUsingMutex {
 		executorService.shutdown();
 
 		System.out.println("Has queued threads: " + counter.hasQueuedThreads());
+		System.out.println("Counter final value: "+counter.getCount());
 	}
 }
