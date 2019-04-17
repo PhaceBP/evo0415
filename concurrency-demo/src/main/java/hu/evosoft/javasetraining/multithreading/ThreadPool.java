@@ -8,7 +8,7 @@ import java.util.concurrent.LinkedBlockingQueue;
 
 public class ThreadPool {
 
-	private BlockingQueue<Runnable> taskQueue = null;
+	private BlockingQueue<Runnable> taskQueue = new LinkedBlockingQueue<Runnable>();
 
 	private ThreadGroup poolGroup = new ThreadGroup("pool");
 

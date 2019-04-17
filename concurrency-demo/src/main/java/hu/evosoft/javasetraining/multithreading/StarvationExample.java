@@ -6,6 +6,7 @@ public class StarvationExample {
 
 	private static Object mutex = new Object();
 
+	
 	static class Worker extends Thread {
 
 		private AtomicInteger counter = new AtomicInteger();
@@ -30,7 +31,7 @@ public class StarvationExample {
 
 	public static void main(String[] args) {
 
-		ThreadGroup tg = new ThreadGroup("KUKA Thread group");
+		ThreadGroup tg = new ThreadGroup("EVO Thread group");
 		
 		tg.setMaxPriority(10);
 
@@ -56,7 +57,7 @@ public class StarvationExample {
 		t5.start();
 
 		try {
-			Thread.sleep(1000);
+			Thread.sleep(5000);
 		} catch (InterruptedException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

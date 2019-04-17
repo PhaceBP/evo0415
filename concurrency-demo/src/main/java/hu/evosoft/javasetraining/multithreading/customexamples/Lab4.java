@@ -1,47 +1,45 @@
-package hu.evosoft.javasetraining.multithreading;
+package hu.evosoft.javasetraining.multithreading.customexamples;
 
-public class TestThreadGroup {
+public class Lab4 {
 
-	class Worker extends Thread {
+	static class Worker extends Thread {
 
 		public Worker(ThreadGroup tg, String name) {
 			super(tg, name);
-
 		}
-
-		@Override
+		
 		public void run() {
-
-			System.out.println(Thread.currentThread().getName() + " starting.");
 
 			while (!Thread.currentThread().isInterrupted()) {
 
 				try {
-					System.out.print(Thread.currentThread().getName()+"|");
-					Thread.sleep(500);
-				} catch (InterruptedException ex) {
-					System.err.println(Thread.currentThread().getName() + " interrupted.");
+					System.out.println("I am working... " + Thread.currentThread().getName());
+					Thread.sleep(2000);
+				} catch (Exception ex) {
+					System.err.println("Error while work.. " + ex);
 					Thread.currentThread().interrupt();
 				}
-
 			}
-
 		}
+
 	}
-
-	public static void main(String[] args) throws InterruptedException {
-
-		TestThreadGroup test = new TestThreadGroup();
-
-		ThreadGroup tg = new ThreadGroup("Evo group");
-
-		Worker w1 = test.new Worker(tg, "w1");
-		Worker w2 = test.new Worker(tg, "w2");
-		Worker w3 = test.new Worker(tg, "w3");
-
+	
+	
+	public static void main(String[]args) throws InterruptedException{
+		
+		ThreadGroup tg = new ThreadGroup("main_tg");
+		
+		Worker w1 = new Worker(tg,"w1");
+		Worker w2 = new Worker(tg,"w2");
+		Worker w3 = new Worker(tg,"w3");
+		Worker w4 = new Worker(tg,"w4");
+		Worker w5 = new Worker(tg,"w5");
+		
 		w1.start();
 		w2.start();
 		w3.start();
+		w4.start();
+		w5.start();
 
 		Thread.sleep(1000);
 
@@ -63,6 +61,8 @@ public class TestThreadGroup {
 		System.out.println(tg.activeCount() + "threads in the thread group after w1 interrupted.");
 		
 		tg.interrupt();
-
+		
+		
+		
 	}
 }
