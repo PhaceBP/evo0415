@@ -2,7 +2,9 @@ package hu.evosoft.javasetraining.functional;
 
 import java.util.Arrays;
 import java.util.Collection;
+import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 import java.util.stream.LongStream;
 import java.util.stream.Stream;
@@ -59,21 +61,25 @@ public class StreamDemo {
 		Stream<String> stream = 
 				  Stream.of("a", "b", "c").filter(element -> element.contains("b"));
 		
+		
+		List<String> elements = stream.collect(Collectors.toList());
+		
 		Optional<String> anyElement = stream.findAny();
 		
-		System.out.println(anyElement.get());
+		System.out.println("Find any: "+anyElement.get());
 		
 		//anyElement = stream.findAny();
 		
 		//////////////////////////////////////////////////
 		
+		System.out.println("-----------------------------------------------------");
+		
 		int reducedParams = Stream.of(1, 2, 3)
-				  .reduce(10, (a, b) -> a + b, (a, b) -> {
-					  System.out.println("combiner was called no parallel");
-				     return a + b;
-				  });
+				  .reduce(10, (a, b) -> a + b);
 		
 		System.out.println(reducedParams);  
+		
+		System.out.println("-----------------------------------------------------");
 		
 		int reducedParallel = Arrays.asList(1, 2, 3).parallelStream()
 			    .reduce(10, (a, b) -> a + b, (a, b) -> {
