@@ -13,3 +13,15 @@ Pelda Stream feladat>
 1 Implementaljunk egy tetszoleges objektumot, taroljunk egy Integert (Random (1 - 1000) generator altal kepzett ertek)
 2 Toltsunk fel egy streamet tetszoleges modon (100) peldanyban
 3 Szurjuk le a rekordokat ahol 500 - 1000
+4 Mappeljuk at az objektumokat integerre
+5 Gyujtsuk ossze egy listaba
+
+
+
+1. Definialjunk egy streamet Stringekbol
+2 Szurjuk le azokat az elemeket amelyek egy adott karakterrel kezdodnek
+3 Ezeket az elemeket nagybetusitsuk
+4 Rendezzuk be oket
+5 Irassuk ki az elemeket egy foreachben
+
+
