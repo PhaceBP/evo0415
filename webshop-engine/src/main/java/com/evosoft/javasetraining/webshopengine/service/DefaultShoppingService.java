@@ -1,10 +1,6 @@
 package com.evosoft.javasetraining.webshopengine.service;
 
-import java.util.ArrayList;
-import java.util.List;
-
-import javax.annotation.PostConstruct;
-
+import org.slf4j.Logger;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Service;
 
@@ -18,32 +14,20 @@ public class DefaultShoppingService implements ShoppingService {
 
 	private final Basket BASKET = new Basket();
 
-	private final List<DiscountCalculatorStrategy> DISCOUNT_CALCULATORS = new ArrayList<DiscountCalculatorStrategy>();
-
-	@PostConstruct
-	public void init() {
-		DISCOUNT_CALCULATORS.add(new ThreeForTwoPriceDiscountCalculatorStrategy());
-		DISCOUNT_CALCULATORS.add(new MegapackDiscountCalculatorStrategy());
-	}
+	@Log
+	private Logger logger;
 
 	public Total calculateTotalPrice() {
-
-		Total optimumPrice = DISCOUNT_CALCULATORS.get(0).calculateTotalPriceOfPurchase(BASKET);
-
-		for (int i = 1; i < DISCOUNT_CALCULATORS.size(); i++) {
-
-			Total tempTotal = DISCOUNT_CALCULATORS.get(i).calculateTotalPriceOfPurchase(BASKET);
-
-			if (tempTotal.getDiscountPrice() < optimumPrice.getDiscountPrice()) {
-				optimumPrice = tempTotal;
-			}
-		}
-
-		return optimumPrice;
-
+		return BASKET.calculateTotalPriceOfPurchase();
 	}
 
 	public void addProductToShoppingBasket(Product product, int amount) {
+		logger.info("Product added to the busket {}, amount {}", product, amount);
 		BASKET.addProduct(product, amount);
+	}
+
+	public void removeProductFromShoppingBasket(Product product, int amount) {
+		logger.info("Product removed from the busket {}, amount {}", product, amount);
+		BASKET.removeProduct(product);
 	}
 }

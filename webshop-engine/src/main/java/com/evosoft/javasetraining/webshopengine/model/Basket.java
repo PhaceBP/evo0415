@@ -43,4 +43,18 @@ public class Basket {
 	public void removeAllElementFromSpecifiedProduct(Product p) {
 		productsInBasket.remove(p);
 	}
+
+	public Total calculateTotalPriceOfPurchase() {
+
+		double totalPrice = 0;
+
+		for (Product p : getProductsFromBasket()) {
+
+			ProductCategory productCategory = p.getProductCategory();
+			Integer amount = getAmountFromTheSpecifiedProduct(p);
+			totalPrice += productCategory.getDiscount().calculatePrice(p, amount);
+		}
+
+		return new Total(totalPrice);
+	}
 }

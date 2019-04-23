@@ -1,45 +1,50 @@
 package com.evosoft.javasetraining.webshopengine.model;
 
+import java.util.ArrayList;
 import java.util.List;
 
-public class ProductCategory extends AbstractProductCategory{
+import javax.persistence.CascadeType;
+import javax.persistence.Entity;
+import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 
-	private Long id;
+@Entity
+public class ProductCategory extends BusinessObject<Long> {
+
 	private String categoryName;
-	private DiscountType discountType;
-	private List<Product> productTypes;
+	@OneToOne
+	protected Discount discount;
+	@OneToMany(mappedBy = "productCategory", cascade = CascadeType.ALL, orphanRemoval = true)
+	private List<Product> productTypes = new ArrayList<Product>();
 
-	public ProductCategory(Long id, String categoryName, DiscountType discountType) {
-		super(discountType);
-		this.id = id;
+	protected ProductCategory(Long id, String categoryName, Discount discount) {
+		super(id, true);
+		this.discount = discount;
 		this.categoryName = categoryName;
-		this.discountType = discountType;
-	}
-
-	public Long getId() {
-		return id;
 	}
 
 	public String getCategoryName() {
 		return categoryName;
 	}
 
-	public DiscountType getDiscountType() {
-		return discountType;
+	public void setCategoryName(String categoryName) {
+		this.categoryName = categoryName;
+	}
+
+	public Discount getDiscount() {
+		return discount;
+	}
+
+	public void setDiscount(Discount discount) {
+		this.discount = discount;
 	}
 
 	public List<Product> getProductTypes() {
 		return productTypes;
 	}
 
-	public void setProductTypes(List<Product> productTypes) {
-		this.productTypes = productTypes;
+	public void addProduct(Product product) {
+		this.productTypes.add(product);
+		product.setProductCategory(this);
 	}
-
-	@Override
-	public double calculatePartPrice(Product p, int numOfOrderedProduct) {
-		// TODO Auto-generated method stub
-		return 0;
-	}
-
 }

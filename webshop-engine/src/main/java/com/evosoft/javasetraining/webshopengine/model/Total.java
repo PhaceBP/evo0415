@@ -2,24 +2,14 @@ package com.evosoft.javasetraining.webshopengine.model;
 
 public class Total {
 
-	private DiscountType discountType;
 	private Double discountPrice;
 
-	public Total(DiscountType discountType, Double discountPrice) {
-		this.discountType = discountType;
+	public Total(Double discountPrice) {
 		this.discountPrice = discountPrice;
-	}
-
-	public DiscountType getDiscountType() {
-		return discountType;
 	}
 
 	public Double getDiscountPrice() {
 		return discountPrice;
-	}
-
-	public void setDiscountType(DiscountType discountType) {
-		this.discountType = discountType;
 	}
 
 	public void setDiscountPrice(Double discountPrice) {
@@ -31,7 +21,6 @@ public class Total {
 		final int prime = 31;
 		int result = 1;
 		result = prime * result + ((discountPrice == null) ? 0 : discountPrice.hashCode());
-		result = prime * result + ((discountType == null) ? 0 : discountType.hashCode());
 		return result;
 	}
 
@@ -49,16 +38,12 @@ public class Total {
 				return false;
 		} else if (!discountPrice.equals(other.discountPrice))
 			return false;
-		if (discountType != other.discountType)
-			return false;
 		return true;
 	}
 
 	@Override
 	public String toString() {
-		return "Total [discountType=" + discountType + ", discountPrice=" + discountPrice + "]";
+		return "Total [discountPrice=" + discountPrice + "]";
 	}
 
-	
-	
 }

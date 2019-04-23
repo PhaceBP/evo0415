@@ -2,13 +2,25 @@ package com.evosoft.javasetraining.webshopengine.model;
 
 import java.io.Serializable;
 
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 import javax.persistence.MappedSuperclass;
 
 @MappedSuperclass
 public abstract class BusinessObject<ID extends Serializable> {
 
+	
+	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
 	private ID id;
 	private Boolean active;
+
+	public BusinessObject(ID id, Boolean active) {
+		super();
+		this.id = id;
+		this.active = active;
+	}
 
 	public Boolean getActive() {
 		return active;

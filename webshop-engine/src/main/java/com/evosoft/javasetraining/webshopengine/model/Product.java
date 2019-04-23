@@ -1,20 +1,39 @@
 package com.evosoft.javasetraining.webshopengine.model;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
+import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 
-import com.evosoft.javasetraining.webshopengine.service.DiscountCalculatorStrategy;
-
-
-public class Product extends BusinessObject<Long>{
+@Entity
+public class Product extends BusinessObject<Long> {
 
 	private String name;
 	private double price;
-	private List<DiscountCalculatorStrategy> supportedDiscountStrategies = new ArrayList<DiscountCalculatorStrategy>();
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "product_category_id")
+	private ProductCategory productCategory;
 
-	public Product(String name, double price) {
+	public Product(Long id, String name, double price, ProductCategory category) {
+		super(id, true);
 		this.name = name;
+		this.price = price;
+		this.productCategory = category;
+	}
+
+	public ProductCategory getProductCategory() {
+		return productCategory;
+	}
+
+	public void setProductCategory(ProductCategory productCategory) {
+		this.productCategory = productCategory;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	public void setPrice(double price) {
 		this.price = price;
 	}
 
@@ -26,41 +45,15 @@ public class Product extends BusinessObject<Long>{
 		return price;
 	}
 
-	public List<DiscountCalculatorStrategy> getSupportedDiscountStrategies() {
-		return Collections.unmodifiableList(supportedDiscountStrategies);
-	}
-
-	public void addSupportedDiscountStrategy(DiscountCalculatorStrategy discountStrategy) {
-		this.supportedDiscountStrategies.add(discountStrategy);
-	}
-
-	public void removeSupportedDiscountStrategy(DiscountCalculatorStrategy discountStrategy) {
-		this.supportedDiscountStrategies.remove(discountStrategy);
-	}
-
-	public boolean isDiscountStrategySupported(Class<? extends DiscountCalculatorStrategy> clazz) {
-
-		boolean ret = false;
-
-		for (DiscountCalculatorStrategy s : this.getSupportedDiscountStrategies()) {
-
-			if (s.getClass() == clazz) {
-				ret = true;
-				break;
-			}
-		}
-		return ret;
-	}
-
 	@Override
 	public int hashCode() {
 		final int prime = 31;
-		int result = 1;
+		int result = super.hashCode();
 		result = prime * result + ((name == null) ? 0 : name.hashCode());
 		long temp;
 		temp = Double.doubleToLongBits(price);
 		result = prime * result + (int) (temp ^ (temp >>> 32));
-		result = prime * result + ((supportedDiscountStrategies == null) ? 0 : supportedDiscountStrategies.hashCode());
+		result = prime * result + ((productCategory == null) ? 0 : productCategory.hashCode());
 		return result;
 	}
 
@@ -68,7 +61,7 @@ public class Product extends BusinessObject<Long>{
 	public boolean equals(Object obj) {
 		if (this == obj)
 			return true;
-		if (obj == null)
+		if (!super.equals(obj))
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
@@ -80,18 +73,17 @@ public class Product extends BusinessObject<Long>{
 			return false;
 		if (Double.doubleToLongBits(price) != Double.doubleToLongBits(other.price))
 			return false;
-		if (supportedDiscountStrategies == null) {
-			if (other.supportedDiscountStrategies != null)
+		if (productCategory == null) {
+			if (other.productCategory != null)
 				return false;
-		} else if (!supportedDiscountStrategies.equals(other.supportedDiscountStrategies))
+		} else if (!productCategory.equals(other.productCategory))
 			return false;
 		return true;
 	}
 
 	@Override
 	public String toString() {
-		return "Product [name=" + name + ", price=" + price + ", supportedDiscountStrategies="
-				+ supportedDiscountStrategies + "]";
+		return "Product [name=" + name + ", price=" + price + "]";
 	}
 
 }

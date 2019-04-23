@@ -1,5 +1,8 @@
 package com.evosoft.javasetraining.webshopengine.model;
 
+import javax.persistence.Entity;
+
+@Entity
 public class Customer extends BusinessObject<Long> {
 
 	private String bankCardNumber;
@@ -9,7 +12,7 @@ public class Customer extends BusinessObject<Long> {
 	private Integer age;
 
 	public Customer(Long id, String address, Integer age) {
-		super();
+		super(id, true);
 		this.address = address;
 		this.age = age;
 	}
