@@ -1,0 +1,12 @@
+Telefonszam validalas:
+
+Irj egy olyan teszt metodust, amivel az alabbi formatumu telefonszamot lehet validalni
+
+Pl: +36-20-3715979
+
++ Kotelezo a string elejen
+36 Ket vagy harom digitbol allo orszag kod
+- elvalaszto karakter
+20 helyi szolgaltato elotag (ketto vagy harom digitbol)
+- elvalaszto karakter
+- telefonszam 7-10 digit
