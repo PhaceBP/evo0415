@@ -2,6 +2,9 @@ package com.evosoft.javasetraining.webshopengine.model;
 
 import java.io.Serializable;
 
+import javax.persistence.MappedSuperclass;
+
+@MappedSuperclass
 public abstract class BusinessObject<ID extends Serializable> {
 
 	private ID id;
