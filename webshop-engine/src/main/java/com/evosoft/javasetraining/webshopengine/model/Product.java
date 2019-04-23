@@ -14,6 +14,9 @@ public class Product extends BusinessObject<Long> {
 	@JoinColumn(name = "product_category_id")
 	private ProductCategory productCategory;
 
+	public Product() {
+		
+	}
 	public Product(Long id, String name, double price, ProductCategory category) {
 		super(id, true);
 		this.name = name;

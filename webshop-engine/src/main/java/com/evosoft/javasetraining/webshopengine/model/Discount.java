@@ -17,6 +17,10 @@ public abstract class Discount extends BusinessObject<Long> {
 
 	private String description;
 
+	public Discount() {
+		
+	}
+	
 	public Discount(Long id, DiscountType discountType, String description) {
 		super(id, true);
 		this.typeOfDiscount = discountType;

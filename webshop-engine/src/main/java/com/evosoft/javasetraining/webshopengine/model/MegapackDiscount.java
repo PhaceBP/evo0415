@@ -7,6 +7,10 @@ import javax.persistence.Entity;
 @DiscriminatorValue(value = "MEGAPACK")
 public class MegapackDiscount extends Discount {
 
+	public MegapackDiscount() {
+		
+	}
+	
 	public MegapackDiscount(Long id) {
 		super(id, DiscountType.MEGAPACK, "Megapack discount");
 	}

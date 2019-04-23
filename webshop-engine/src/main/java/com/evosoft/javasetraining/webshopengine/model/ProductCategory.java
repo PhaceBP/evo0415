@@ -17,7 +17,11 @@ public class ProductCategory extends BusinessObject<Long> {
 	@OneToMany(mappedBy = "productCategory", cascade = CascadeType.ALL, orphanRemoval = true)
 	private List<Product> productTypes = new ArrayList<Product>();
 
-	protected ProductCategory(Long id, String categoryName, Discount discount) {
+	public ProductCategory() {
+
+	}
+
+	public ProductCategory(Long id, String categoryName, Discount discount) {
 		super(id, true);
 		this.discount = discount;
 		this.categoryName = categoryName;

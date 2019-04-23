@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<product id="100">
+    <description>testdesc</description>
+    <price>1200</price>
+</product>

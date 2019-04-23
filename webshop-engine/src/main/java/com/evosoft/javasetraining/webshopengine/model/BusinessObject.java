@@ -16,6 +16,11 @@ public abstract class BusinessObject<ID extends Serializable> {
 	private ID id;
 	private Boolean active;
 
+	
+	public BusinessObject() {
+		
+	}
+	
 	public BusinessObject(ID id, Boolean active) {
 		super();
 		this.id = id;
