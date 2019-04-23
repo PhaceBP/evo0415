@@ -36,6 +36,7 @@ public abstract class BusinessObject<ID extends Serializable> {
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
+		@SuppressWarnings("rawtypes")
 		BusinessObject other = (BusinessObject) obj;
 		if (active == null) {
 			if (other.active != null)

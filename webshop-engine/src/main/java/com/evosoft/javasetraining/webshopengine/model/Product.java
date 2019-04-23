@@ -7,7 +7,7 @@ import java.util.List;
 import com.evosoft.javasetraining.webshopengine.service.DiscountCalculatorStrategy;
 
 
-public class Product {
+public class Product extends BusinessObject<Long>{
 
 	private String name;
 	private double price;

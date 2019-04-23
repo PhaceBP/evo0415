@@ -1,8 +1,10 @@
 package com.evosoft.javasetraining.webshopengine.model;
 
+import java.io.Serializable;
+
 import com.evosoft.javasetraining.webshopengine.service.DiscountCalculatorStrategy;
 
-public abstract class AbstractProductCategory implements DiscountCalculatorStrategy {
+public abstract class AbstractProductCategory<ID extends Serializable> extends BusinessObject<ID> implements DiscountCalculatorStrategy {
 
 	protected DiscountType discountType;
 
