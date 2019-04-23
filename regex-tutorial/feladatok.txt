@@ -10,3 +10,24 @@ Pl: +36-20-3715979
 20 helyi szolgaltato elotag (ketto vagy harom digitbol)
 - elvalaszto karakter
 - telefonszam 7-10 digit
+
+----------------------------------
+
+
+IBAN validator
+
+country code using ISO 3166-1 alpha-2 – two letters,
+check digits – two digits, and
+Basic Bank Account Number (BBAN) – up to 30 alphanumeric characters that are country-specific
+
+
+-------------------------------------------
+
+Email validator
+
+- Barmilyen karakterrel kezdodhet, de minimum 4 karakter kell legyen a @ elotti resz
+- @
+- Barmilyen karakter 1 vagy tobb elofordulassal
+- A String vege pedig ".hu" top level domainnel kell veget erjen
+
+pl: teszt@citromail.hu
